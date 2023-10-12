@@ -5,9 +5,12 @@ import Exercises from '../components/Exercises'
 import MainBanner from '../components/MainBanner'
 import SearchExercises from '../components/SearchExercises'
 
-const Home = () => {
-  const [exercises, setExercises] = useState([]);
+const Home = () => { 
   const [bodyPart, setBodyPart] = useState('all');
+ 
+  const [exercises, setExercises] = useState([]);
+
+ 
   return (
     <Box>
       <MainBanner/>
