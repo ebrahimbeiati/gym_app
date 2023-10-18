@@ -83,11 +83,9 @@
 // };
 
 // export default Exercises;
-
 import React, { useEffect, useState } from "react";
 import Pagination from "@mui/material/Pagination";
 import { Box, Stack, Typography } from "@mui/material";
-
 import { exerciseOptions, fetchData } from "../utils/fetchData";
 import ExerciseCard from "./ExerciseCard";
 import Loader from "./Loader";
@@ -121,7 +119,11 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
   // Pagination
   const indexOfLastExercise = currentPage * exercisesPerPage;
   const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
-  const currentExercises = Array.isArray(exercises) ? exercises.slice(indexOfFirstExercise, indexOfLastExercise) : [];
+
+  // Ensure exercises is an array before using slice
+  const currentExercises = Array.isArray(exercises)
+    ? exercises.slice(indexOfFirstExercise, indexOfLastExercise)
+    : [];
 
   const paginate = (event, value) => {
     setCurrentPage(value);
@@ -149,9 +151,9 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
       >
         {currentExercises.map((exercise, idx) => (
           <ExerciseCard key={idx} exercise={exercise} />
-        ))}
+       ) )}
       </Stack>
-      <Stack sx={{ mt: { lg: "114px", xs: "70px" }} }alignItems="center">
+      <Stack sx={{ mt: { lg: "114px", xs: "70px" }}} alignItems="center">
         {exercises.length > 9 && (
           <Pagination
             color="standard"
